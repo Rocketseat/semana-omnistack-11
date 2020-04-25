@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { FiArrowLeft } from 'react-icons/fi'
+import { FiArrowLeft } from 'react-icons/fi';
 
 import api from '../../services/api';
 
@@ -30,8 +30,8 @@ export default function NewIncident() {
       await api.post('incidents', data, {
         headers: {
           Authorization: ongId,
-        }
-      })
+        },
+      });
 
       history.push('/profile');
     } catch (err) {
@@ -43,10 +43,13 @@ export default function NewIncident() {
     <div className="new-incident-container">
       <div className="content">
         <section>
-          <img src={logoImg} alt="Be The Hero"/>
+          <img src={logoImg} alt="Be The Hero" />
 
           <h1>Cadastrar novo caso</h1>
-          <p>Descreva o caso detalhadamente para encontrar um herói para resolver isso.</p>
+          <p>
+            Descreva o caso detalhadamente para encontrar um herói para resolver
+            isso.
+          </p>
 
           <Link className="back-link" to="/profile">
             <FiArrowLeft size={16} color="#E02041" />
@@ -55,27 +58,29 @@ export default function NewIncident() {
         </section>
 
         <form onSubmit={handleNewIncident}>
-          <input 
+          <input
             placeholder="Título do caso"
             value={title}
-            onChange={e => setTitle(e.target.value)}
+            onChange={(e) => setTitle(e.target.value)}
           />
 
-          <textarea 
+          <textarea
             placeholder="Descrição"
             value={description}
-            onChange={e => setDescription(e.target.value)}
+            onChange={(e) => setDescription(e.target.value)}
           />
 
-          <input 
+          <input
             placeholder="Valor em reais"
             value={value}
-            onChange={e => setValue(e.target.value)}
+            onChange={(e) => setValue(e.target.value)}
           />
 
-          <button className="button" type="submit">Cadastrar</button>
+          <button className="button" type="submit">
+            Cadastrar
+          </button>
         </form>
       </div>
     </div>
-  )
+  );
 }
