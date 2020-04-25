@@ -34,7 +34,7 @@ export default function Incidents() {
     setLoading(true);
 
     const response = await api.get('incidents', {
-      params: { page }
+      params: { page },
     });
 
     setIncidents([...incidents, ...response.data]);
@@ -46,7 +46,7 @@ export default function Incidents() {
   useEffect(() => {
     loadIncidents();
   }, []);
- 
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -57,12 +57,14 @@ export default function Incidents() {
       </View>
 
       <Text style={styles.title}>Bem-vindo!</Text>
-      <Text style={styles.description}>Escolha um dos casos abaixo e salve o dia.</Text>
+      <Text style={styles.description}>
+        Escolha um dos casos abaixo e salve o dia.
+      </Text>
 
       <FlatList
         data={incidents}
         style={styles.incidentList}
-        keyExtractor={incident => String(incident.id)}
+        keyExtractor={(incident) => String(incident.id)}
         // showsVerticalScrollIndicator={false}
         onEndReached={loadIncidents}
         onEndReachedThreshold={0.2}
@@ -76,18 +78,18 @@ export default function Incidents() {
 
             <Text style={styles.incidentProperty}>VALOR:</Text>
             <Text style={styles.incidentValue}>
-              {Intl.NumberFormat('pt-BR', { 
-                style: 'currency', 
-                currency: 'BRL' 
+              {Intl.NumberFormat('pt-BR', {
+                style: 'currency',
+                currency: 'BRL',
               }).format(incident.value)}
             </Text>
 
-            <TouchableOpacity 
-              style={styles.detailsButton} 
+            <TouchableOpacity
+              style={styles.detailsButton}
               onPress={() => navigateToDetail(incident)}
             >
               <Text style={styles.detailsButtonText}>Ver mais detalhes</Text>
-              <Feather name="arrow-right" size={16} color="#E02041" />            
+              <Feather name="arrow-right" size={16} color="#E02041" />
             </TouchableOpacity>
           </View>
         )}
