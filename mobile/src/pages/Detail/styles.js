@@ -12,14 +12,15 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    marginBottom: 8,
   },
-
+  
   incident: {
     padding: 24,
     borderRadius: 8,
     backgroundColor: '#FFF',
     marginBottom: 16,
-    marginTop: 48,
+    marginTop: -1,
   },
 
   incidentProperty: {
@@ -56,23 +57,24 @@ export default StyleSheet.create({
   },
 
   actions: {
-    marginTop: 16,
+    marginTop: 10,
     flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
+    justifyContent:'space-between'
+},
 
-  action: {
-    backgroundColor: '#e02041',
-    borderRadius: 8,
-    height: 50,
-    width: '48%',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
+  action:{
+        backgroundColor: '#e02041',
+        borderRadius: 8,
+        height: 40,
+        width: '35%',
+        justifyContent: 'center',
+        alignItems:'center',
+        marginRight: 1
+    },
 
-  actionText: {
-    color: '#FFF',
-    fontSize: 15,
-    fontWeight: 'bold'
-  },
+    actionText: {
+        color: '#FFF',
+        fontSize: 15,
+        fontWeight: 'bold'
+    }
 });
