@@ -12,6 +12,7 @@ export default function NewIncident() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [value, setValue] = useState('');
+  const [link_info, set_LinkInfo] = useState('');
 
   const history = useHistory();
 
@@ -24,6 +25,7 @@ export default function NewIncident() {
       title,
       description,
       value,
+      link_info
     };
 
     try {
@@ -65,6 +67,12 @@ export default function NewIncident() {
             placeholder="Descrição"
             value={description}
             onChange={e => setDescription(e.target.value)}
+          />
+
+          <input 
+            placeholder="Para mais informações"
+            value={link_info}
+            onChange={e => set_LinkInfo(e.target.value)}
           />
 
           <input 
