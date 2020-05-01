@@ -12,6 +12,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    marginBottom: 8,
   },
 
   incident: {
@@ -19,7 +20,7 @@ export default StyleSheet.create({
     borderRadius: 8,
     backgroundColor: '#FFF',
     marginBottom: 16,
-    marginTop: 48,
+    marginTop: -1,
   },
 
   incidentProperty: {
@@ -56,7 +57,7 @@ export default StyleSheet.create({
   },
 
   actions: {
-    marginTop: 16,
+    marginTop: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
@@ -64,10 +65,11 @@ export default StyleSheet.create({
   action: {
     backgroundColor: '#e02041',
     borderRadius: 8,
-    height: 50,
-    width: '48%',
+    height: 40,
+    width: '35%',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginRight: 1
   },
 
   actionText: {

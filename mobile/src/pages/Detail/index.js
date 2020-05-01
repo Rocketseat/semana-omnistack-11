@@ -1,7 +1,7 @@
 import React from 'react';
 import { Feather } from '@expo/vector-icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { View, Text, Image, TouchableOpacity, Linking } from 'react-native';
+import { View, Text, Image, TouchableOpacity, Linking, ScrollView } from 'react-native';
 import * as MailComposer from 'expo-mail-composer';
 
 import logoImg from '../../assets/logo.png';
@@ -15,9 +15,15 @@ export default function Detail() {
   const incident = route.params.incident;
   const message = `Olá ${incident.name}, estou entrando em contato pois gostaria de ajudar no caso "${incident.title}" com o valor de ${Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(incident.value)}`;
 
+  const link_info = incident.link_info;
+
   function navigateBack() {
     navigation.goBack()
   }
+
+  function navigateToMoreInfo(incident){
+    navigation.navigate('MoreInfo', {link_info});
+}
 
   function sendMail() {
     MailComposer.composeAsync({
@@ -41,21 +47,23 @@ export default function Detail() {
         </TouchableOpacity>
       </View>
 
-      <View style={styles.incident}>
+      <ScrollView
+      showsVerticalScrollIndicator={false} style = {styles.incident}
+      >
         <Text style={[styles.incidentProperty, { marginTop: 0 }]}>ONG:</Text>
         <Text style={styles.incidentValue}>{incident.name} de {incident.city}/{incident.uf}</Text>
 
         <Text style={styles.incidentProperty}>CASO:</Text>
-        <Text style={styles.incidentValue}>{incident.title}</Text>
+        <Text style={styles.incidentValue}>{incident.description}</Text>
 
         <Text style={styles.incidentProperty}>VALOR:</Text>
         <Text style={styles.incidentValue}>
           {Intl.NumberFormat('pt-BR', { 
             style: 'currency', 
             currency: 'BRL' 
-          }).format(incident.value)}
+          }).format(incident.value)} {'\n\n'}
         </Text>
-      </View>
+        </ScrollView>
 
       <View style={styles.contactBox}>
         <Text style={styles.heroTitle}>Salve o dia!</Text>
@@ -71,6 +79,11 @@ export default function Detail() {
           <TouchableOpacity style={styles.action} onPress={sendMail}>
             <Text style={styles.actionText}>E-mail</Text>
           </TouchableOpacity>
+
+          <TouchableOpacity style = {styles.action} onPress = {navigateToMoreInfo}>
+                        <Text style = {styles.actionText}>+ info</Text>
+          </TouchableOpacity> 
+          
         </View>
       </View>
     </View>
